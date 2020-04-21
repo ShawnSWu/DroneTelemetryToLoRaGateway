@@ -43,7 +43,8 @@ class EKS76S:
         return result.strip()
 
     def send_bundle_data_to_gateway(self, array):
-        print("-~~~~>"+array)
+        print("-~~~~>")
+        print(array)
         for data in array:
             print("=~~~~~~>" + data)
             hex_data = binascii.b2a_hex( json.dumps(data).encode( 'utf-8' ) )
