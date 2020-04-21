@@ -43,8 +43,8 @@ class ArdupilotEntity:
             }
         }
 
-        package = [gps.lat, gps.lon, gps.alt, attitude_3axis.pitch, attitude_3axis.yaw, attitude_3axis.roll,
-                   velocity[0], ned.north, ned.east, ned.down]
+        package = {gps.lat, gps.lon, gps.alt, attitude_3axis.pitch, attitude_3axis.yaw, attitude_3axis.roll,
+                   velocity[0], ned.north, ned.east, ned.down}
 
         print("----------------------------")
         print(package)
