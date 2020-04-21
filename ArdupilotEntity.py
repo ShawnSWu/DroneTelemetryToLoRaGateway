@@ -25,12 +25,6 @@ class ArdupilotEntity:
                 'lat': gps.lat,
                 'lon': gps.lon,
                 'alt': gps.alt
-            },
-            'flyMode': fly_mode,
-            'ned': {
-                'north': ned.north,
-                'east': ned.east,
-                'down': ned.down
             }
         }
 
@@ -39,13 +33,27 @@ class ArdupilotEntity:
                 'pitch': attitude_3axis.pitch,
                 'yaw': attitude_3axis.yaw,
                 'roll': attitude_3axis.roll,
-            },
+            }
+        }
+
+        drone_data_third_part = {
+            'flyMode': fly_mode,
             'velocity': {
                 'vx': velocity[0],
                 'vy': velocity[1],
                 'vz': velocity[2]
             }
         }
+
+        drone_data_fourth_part = {
+            'ned': {
+                'north': ned.north,
+                'east': ned.east,
+                'down': ned.down
+            }
+        }
+
+
 
         drone_data = {
             'position': {
@@ -73,6 +81,8 @@ class ArdupilotEntity:
         print("-----------------------------------------")
         print(drone_data_first_part)
         print(drone_data_second_part)
+        print(drone_data_third_part)
+        print(drone_data_fourth_part)
         print("-----------------------------------------")
 
         return json.dumps(drone_data)
