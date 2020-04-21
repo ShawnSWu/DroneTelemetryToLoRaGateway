@@ -1,5 +1,4 @@
 from dronekit import connect
-import json
 
 class ArdupilotEntity:
     def __init__(self, ip, baud, heartbeat_timeout):
@@ -47,4 +46,4 @@ class ArdupilotEntity:
                 'd': ned.down
         }
 
-        return json.dumps([coordinate ,attitude, velocity, ned_coordinate])
+        return [coordinate, attitude, velocity, ned_coordinate]

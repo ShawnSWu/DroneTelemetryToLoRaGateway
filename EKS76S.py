@@ -1,5 +1,6 @@
 from time import sleep
 import serial, binascii
+import json
 
 
 class EKS76S:
@@ -43,9 +44,9 @@ class EKS76S:
 
     def send_bundle_data_to_gateway(self, array):
         print("-~~~~>"+array)
-        print(range( array ))
-        for i in range( array ):
-            hex_data = binascii.b2a_hex( array[i].encode( 'utf-8' ) )
+        for data in array:
+            print("=~~~~~~>" + data)
+            hex_data = binascii.b2a_hex( json.dumps(data).encode( 'utf-8' ) )
             hex_data_string = bytes.decode( hex_data )
             packget = 'mac tx ucnf 2 %s' % hex_data_string
             print(packget)
