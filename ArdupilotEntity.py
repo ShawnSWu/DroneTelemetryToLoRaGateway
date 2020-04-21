@@ -20,6 +20,33 @@ class ArdupilotEntity:
 
         ned = self.vehicle.location.local_frame
 
+        drone_data_first_part = {
+            'position': {
+                'lat': gps.lat,
+                'lon': gps.lon,
+                'alt': gps.alt
+            },
+            'flyMode': fly_mode,
+            'ned': {
+                'north': ned.north,
+                'east': ned.east,
+                'down': ned.down
+            }
+        }
+
+        drone_data_second_part = {
+            'attitude': {
+                'pitch': attitude_3axis.pitch,
+                'yaw': attitude_3axis.yaw,
+                'roll': attitude_3axis.roll,
+            },
+            'velocity': {
+                'vx': velocity[0],
+                'vy': velocity[1],
+                'vz': velocity[2]
+            }
+        }
+
         drone_data = {
             'position': {
                 'lat': gps.lat,
@@ -43,10 +70,9 @@ class ArdupilotEntity:
             }
         }
 
-        package = {gps.lat, gps.lon, gps.alt, attitude_3axis.pitch, attitude_3axis.yaw, attitude_3axis.roll,
-                   velocity[0], ned.north, ned.east, ned.down}
+        print("-----------------------------------------")
+        print(drone_data_first_part)
+        print(drone_data_second_part)
+        print("-----------------------------------------")
 
-        print("----------------------------")
-        print(package)
-        print("----------------------------")
-        return json.dumps(package)
+        return json.dumps(drone_data)
