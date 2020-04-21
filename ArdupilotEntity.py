@@ -19,11 +19,11 @@ class ArdupilotEntity:
 
         ned = self.vehicle.location.local_frame
 
-        coordinate = "{%f,%f,%f}" % gps.lat, gps.lon, gps.alt
+        coordinate = "{%s,%s,%s}" % gps.lat, gps.lon, gps.alt
 
-        attitude = "{%f,%f,%f}" % attitude_3axis.pitch, attitude_3axis.yaw, attitude_3axis.roll
+        attitude = "{%s,%s,%s}" % attitude_3axis.pitch, attitude_3axis.yaw, attitude_3axis.roll
 
-        velocity = "{%s,%f,%f,%f}" % fly_mode, velocity[0], velocity[1], velocity[2]
+        velocity = "{%s,%s,%s,%s}" % fly_mode, velocity[0], velocity[1], velocity[2]
 
         ned_coordinate = "{%s,%s,%s}" % ned.north, ned.east, ned.down
 
