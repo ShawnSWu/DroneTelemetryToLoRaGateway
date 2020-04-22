@@ -3,6 +3,13 @@ import serial, binascii
 import json
 
 
+def get_send_hex_command(data):
+    hex_data = binascii.b2a_hex( json.dumps( data ).encode( 'utf-8' ) )
+    hex_data_string = bytes.decode( hex_data )
+    command = 'mac tx ucnf 2 %s' % hex_data_string
+    return command
+
+
 class EKS76S:
     def __init__(self, com_port, baud_rate, timeout):
         self.com_port = com_port

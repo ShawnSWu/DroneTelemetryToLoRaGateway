@@ -16,5 +16,5 @@ while True:
     result = lora_board.send_bundle_data_to_gateway(pixhawk.get_drone_data())
     print("-------->")
     print(result)
-    sleep(5)
+    sleep(3)
 
