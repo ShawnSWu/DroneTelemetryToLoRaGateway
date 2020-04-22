@@ -13,7 +13,7 @@ if lora_board.join_abp() is False:
     lora_board.join_abp()
 
 while True:
-    result = lora_board.send_bundle_data_to_gateway(pixhawk.get_drone_data())
+    result = lora_board.send_data_to_gateway(pixhawk.get_drone_data())
     print("-------->")
     print(result)
     sleep(5)
