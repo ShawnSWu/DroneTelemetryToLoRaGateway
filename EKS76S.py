@@ -53,7 +53,7 @@ class EKS76S:
         for i in range(4):
             hex_data = binascii.b2a_hex( json.dumps(array[i]).encode( 'utf-8' ) )
             hex_data_string = bytes.decode( hex_data )
-            command = 'mac tx ucnf %d %s' % (i, hex_data_string)
+            command = 'mac tx ucnf %d %s' % (i+1, hex_data_string)
             print(command)
             self.serial.write( command.encode( encoding="utf-8" ) )
             result_byte = self.serial.read( 30 )
