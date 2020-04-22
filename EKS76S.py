@@ -52,10 +52,15 @@ class EKS76S:
         velocity = binascii.b2a_hex( json.dumps( array[2] ).encode( 'utf-8' ) )
         ned_coordinate = binascii.b2a_hex( json.dumps( array[3] ).encode( 'utf-8' ) )
 
-        self.serial.write( ('mac tx ucnf 2 %s' % coordinate).encode( encoding="utf-8" ) )
-        self.serial.write( ('mac tx ucnf 2 %s' % attitude).encode( encoding="utf-8" ) )
-        self.serial.write( ('mac tx ucnf 2 %s' % velocity).encode( encoding="utf-8" ) )
-        self.serial.write( ('mac tx ucnf 2 %s' % ned_coordinate).encode( encoding="utf-8" ) )
+        send_coordinate_command = 'mac tx ucnf 2 %s' % coordinate
+        send_attitude_command = 'mac tx ucnf 2 %s' % attitude
+        send_velocity_command = 'mac tx ucnf 2 %s' % velocity
+        send_ned_coordinate_command = 'mac tx ucnf 2 %s' % ned_coordinate
+
+        self.serial.write( send_coordinate_command.encode( encoding="utf-8" ) )
+        self.serial.write( send_attitude_command.encode( encoding="utf-8" ) )
+        self.serial.write( send_velocity_command.encode( encoding="utf-8" ) )
+        self.serial.write( send_ned_coordinate_command.encode( encoding="utf-8" ) )
 
         result_byte = self.serial.read( 100 )
         result = bytes.decode( result_byte )
