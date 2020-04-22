@@ -23,7 +23,7 @@ class ArdupilotEntity:
 
         attitude = "{%s,%s,%s}" % (format(attitude_3axis.pitch, '9f'), format(attitude_3axis.yaw, '9f'), format(attitude_3axis.roll, '9f'))
 
-        velocity = "{%s,%s,%s,%s}" % (fly_mode, format(velocity[0], '5f'), format(velocity[1], '5f'), format(velocity[2], '5f'))
+        velocity = "{%s,%s,%s,%s}" % (fly_mode, format(velocity[0], '4f'), format(velocity[1], '4f'), format(velocity[2], '4f'))
 
         ned_coordinate = "{%s,%s,%s}" % (ned.north, ned.east, ned.down)
 
