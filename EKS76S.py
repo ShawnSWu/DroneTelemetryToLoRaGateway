@@ -31,11 +31,11 @@ class EKS76S:
     def send_data_to_gateway(self, data):
         hex_data = binascii.b2a_hex( data.encode( 'utf-8' ) )
         hex_data_string = bytes.decode( hex_data )
-        packget = 'mac tx ucnf 2 2222222222111111111144444444445555555555999999999900000000005'
+        packget = 'mac tx ucnf 2 %s' % hex_data_string
         print(packget)
         self.serial.write( packget.encode( encoding="utf-8" ) )
         self.serial.flush()
-        result_byte = self.serial.read( 100 )
+        result_byte = self.serial.read( 30 )
         result = bytes.decode( result_byte )
         result.replace( '\n', '' )
         result.replace( '\r', '' )
@@ -50,7 +50,7 @@ class EKS76S:
             packget = 'mac tx ucnf 2 %s' % hex_data_string
             print(packget)
             self.serial.write( packget.encode( encoding="utf-8" ) )
-            result_byte = self.serial.read( 100 )
+            result_byte = self.serial.read( 30 )
             result = bytes.decode( result_byte )
             result.replace( '\n', '' )
             result.replace( '\r', '' )
@@ -61,7 +61,7 @@ class EKS76S:
     def is_joined(self):
         self.serial.write( 'mac get_join_status'.encode( encoding="utf-8" ) )
         self.serial.flush()
-        result_byte = self.serial.read( 100 )
+        result_byte = self.serial.read( 30 )
         result = bytes.decode( result_byte )
         result.replace( '\n', '' )
         result.replace( '\r', '' )
