@@ -3,6 +3,10 @@ import serial, binascii
 import json
 
 
+def convert_to_hex_string(data):
+    hex_data = binascii.b2a_hex( json.dumps( data ).encode( 'utf-8' ) )
+    return bytes.decode( hex_data )
+
 class EKS76S:
     def __init__(self, com_port, baud_rate, timeout):
         self.com_port = com_port
@@ -43,19 +47,22 @@ class EKS76S:
         return result.strip()
 
     def send_bundle_data_to_gateway(self, array):
-        for data in array:
-            print(data)
-            hex_data = binascii.b2a_hex( json.dumps(data).encode( 'utf-8' ) )
-            hex_data_string = bytes.decode( hex_data )
-            packget = 'mac tx ucnf 2 %s' % hex_data_string
-            print(packget)
-            self.serial.write( packget.encode( encoding="utf-8" ) )
-            result_byte = self.serial.read( 30 )
-            result = bytes.decode( result_byte )
-            result.replace( '\n', '' )
-            result.replace( '\r', '' )
-            result.replace( '>>', '' )
-            print(result.strip())
+        coordinate = binascii.b2a_hex( json.dumps( array[0] ).encode( 'utf-8' ) )
+        attitude = binascii.b2a_hex( json.dumps( array[1] ).encode( 'utf-8' ) )
+        velocity = binascii.b2a_hex( json.dumps( array[2] ).encode( 'utf-8' ) )
+        ned_coordinate = binascii.b2a_hex( json.dumps( array[3] ).encode( 'utf-8' ) )
+
+        self.serial.write( ('mac tx ucnf 2 %s' % coordinate).encode( encoding="utf-8" ) )
+        self.serial.write( ('mac tx ucnf 2 %s' % attitude).encode( encoding="utf-8" ) )
+        self.serial.write( ('mac tx ucnf 2 %s' % velocity).encode( encoding="utf-8" ) )
+        self.serial.write( ('mac tx ucnf 2 %s' % ned_coordinate).encode( encoding="utf-8" ) )
+
+        result_byte = self.serial.read( 100 )
+        result = bytes.decode( result_byte )
+        result.replace( '\n', '' )
+        result.replace( '\r', '' )
+        result.replace( '>>', '' )
+        print(result.strip())
         self.serial.flush()
 
     def is_joined(self):
@@ -67,3 +74,6 @@ class EKS76S:
         result.replace( '\r', '' )
         result.replace( '>>', '' )
         return result.strip()
+
+
+
