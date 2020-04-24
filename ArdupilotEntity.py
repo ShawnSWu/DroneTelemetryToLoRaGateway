@@ -17,16 +17,9 @@ class ArdupilotEntity:
         # lon_hex = gps_convertor(gps.lon)
         # alt_hex = gps_convertor(gps.lat)
 
-        def raw_imu_callback(self, attr_name, value):
-                # attr_name == 'raw_imu'
-                # value == vehicle.raw_imu
-                print("--------------------start--------------------")
-                print(value)
-                print(attr_name)
-                print("--------------------start--------------------")
+        imu = self.vehicle.raw_imu
 
-
-        self.vehicle.add_attribute_listener( 'raw_imu', raw_imu_callback )
+        print(imu)
 
 
         # attitude_3axis = self.vehicle.attitude
