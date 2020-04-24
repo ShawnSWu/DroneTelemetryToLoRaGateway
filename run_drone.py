@@ -14,10 +14,10 @@ if lora_board.join_abp() is False:
 
 pixhawk.get_drone_data()
 
-print("Drone status")
-print(pixhawk.vehicle.is_armable)
-while pixhawk.vehicle.is_armable:
-    result = lora_board.send_bundle_data_to_gateway(pixhawk.get_drone_data())
+# print("Drone status")
+# print(pixhawk.vehicle.is_armable)
+while True:
+    result = lora_board.send_data_to_gateway(pixhawk.get_drone_data())
     print("-------->")
     print(result)
     sleep(3)

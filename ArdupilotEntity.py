@@ -59,10 +59,7 @@ class ArdupilotEntity:
 
         ned = self.vehicle.location.local_frame
 
-        print("ned:")
-        print(ned)
-
-        # return [coordinate, attitude, velocity, ned_coordinate]
+        return payload.getBuffer()
 
 
 
