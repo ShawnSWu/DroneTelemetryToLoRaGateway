@@ -56,7 +56,7 @@ class ArdupilotEntity:
 
         ned = self.vehicle.location.local_frame
 
-        return binascii.hexlify(payload.getBuffer()).hex()
+        return binascii.hexlify(payload.getBuffer()).decode('utf8')
 
 
 
