@@ -1,6 +1,7 @@
 from dronekit import connect, Vehicle
 from  my_vehicle import MyVehicle  #Our custom vehicle class
 import math
+from cayennelpp import CayenneLPP
 
 class ArdupilotEntity:
     def __init__(self, ip, baud, heartbeat_timeout):
@@ -20,41 +21,39 @@ class ArdupilotEntity:
        
     """
     def get_drone_data(self):
+        payload = CayenneLPP()
+
         gps = self.vehicle.location.global_relative_frame
+        imu = self.vehicle.raw_imu
 
-        lon_hex = gps_convertor(gps.lon) #-180 ~ 180
-        lat_hex = gps_convertor(gps.lat) #-90 ~ 90
-        alt_hex = gps_convertor(gps.lat)
+        payload.addGPS(1, gps.lat, gps.lon, gps.alt)
+        payload.addGyrometer(2, imu.xgyro, imu.ygyro, imu.zgyro)
+        payload.addAccelerometer(2, imu.xacc, imu.yacc, imu.zacc)
 
-        gps_hex_str = (lat_hex + lon_hex + alt_hex)
-        print("GPS:")
-        print(gps)
+        print("payload")
+        print(payload.getBuffer())
 
-        xgyro = self.vehicle.raw_imu.xgyro # Angular speed around X axis (millirad /sec)
-        ygyro = self.vehicle.raw_imu.ygyro # Angular speed around Y axis (millirad /sec)
-        zgyro = self.vehicle.raw_imu.zgyro # Angular speed around Z axis (millirad /sec)
-        print("xgyro:")
-        print(xgyro)
-        print("ygyro:")
-        print(ygyro)
-        print("zgyro:")
-        print(zgyro)
+
+        # lon_hex = gps_convertor(gps.lon) #-180 ~ 180
+        # lat_hex = gps_convertor(gps.lat) #-90 ~ 90
+        # alt_hex = gps_convertor(gps.lat)
+        # gps_hex_str = (lat_hex + lon_hex + alt_hex)
+        # print("GPS:")
+        # print(gps)
+
+        # xgyro = self.vehicle.raw_imu.xgyro # Angular speed around X axis (millirad /sec)
+        # ygyro = self.vehicle.raw_imu.ygyro # Angular speed around Y axis (millirad /sec)
+        # zgyro = self.vehicle.raw_imu.zgyro # Angular speed around Z axis (millirad /sec)
+        # print("xgyro:")
+        # print(xgyro)
+        # print("ygyro:")
+        # print(ygyro)
+        # print("zgyro:")
+        # print(zgyro)
 
         xacc = self.vehicle.raw_imu.xacc  # x acceleration (mg)
         yacc = self.vehicle.raw_imu.yacc  # y acceleration (mg)
         zacc = self.vehicle.raw_imu.zacc  # z acceleration (mg)
-
-        print("xacc:")
-        print(xacc)
-        print("yacc:")
-        print(yacc)
-        print("zacc:")
-        print(zacc)
-
-        velocity = self.vehicle.velocity
-
-        print("velocity:")
-        print(velocity)
 
         fly_mode = self.vehicle.mode.name
 
