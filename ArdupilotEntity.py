@@ -13,24 +13,22 @@ class ArdupilotEntity:
     def get_drone_data(self):
         gps = self.vehicle.location.global_relative_frame
 
-        # lat_hex = gps_convertor(gps.lat)
+        lat_hex = gps_convertor(gps.lat)
+        print(lat_hex)
         # lon_hex = gps_convertor(gps.lon)
         # alt_hex = gps_convertor(gps.lat)
 
         imu = self.vehicle.raw_imu
-        print("--------------------------")
 
-        print(imu)
+        velocity = self.vehicle.velocity
+
+        fly_mode = self.vehicle.mode.name
+
+        ned = self.vehicle.location.local_frame
 
 
-        # attitude_3axis = self.vehicle.attitude
-        #
-        # velocity = self.vehicle.velocity
-        #
-        # fly_mode = self.vehicle.mode.name
-        #
-        # ned = self.vehicle.location.local_frame
-        #
+
+
         # coordinate = "{%s,%s,%s}" % (format(gps.lat, '4f'), format(gps.lon, '4f'), format(gps.alt, '4f'))
         #
         # # attitude = "{%s,%s,%s}" % (format(attitude_3axis.pitch, '9f'), format(attitude_3axis.yaw, '9f'), format(attitude_3axis.roll, '9f'))
