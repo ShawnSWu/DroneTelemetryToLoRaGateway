@@ -17,30 +17,23 @@ class ArdupilotEntity:
         lon_hex = gps_convertor(gps.lon)
         alt_hex = gps_convertor(gps.lat)
 
+        gps_hex_str = (lat_hex + lon_hex + alt_hex)
+        print(gps)
+
         xgyro = self.vehicle.raw_imu.xgyro
         ygyro = self.vehicle.raw_imu.ygyro
         zgyro = self.vehicle.raw_imu.zgyro
-        print('--------')
-        print(xgyro)
-        print(ygyro)
-        print(zgyro)
+
+
+        xacc = self.vehicle.raw_imu.xacc
+        yacc = self.vehicle.raw_imu.yacc
+        zacc = self.vehicle.raw_imu.zacc
 
         velocity = self.vehicle.velocity
 
         fly_mode = self.vehicle.mode.name
 
         ned = self.vehicle.location.local_frame
-
-
-
-
-        # coordinate = "{%s,%s,%s}" % (format(gps.lat, '4f'), format(gps.lon, '4f'), format(gps.alt, '4f'))
-        #
-        # # attitude = "{%s,%s,%s}" % (format(attitude_3axis.pitch, '9f'), format(attitude_3axis.yaw, '9f'), format(attitude_3axis.roll, '9f'))
-        #
-        # velocity = "{%s,%s,%s,%s}" % (fly_mode, format(velocity[0], '4f'), format(velocity[1], '4f'), format(velocity[2], '4f'))
-        #
-        # ned_coordinate = "{%s,%s,%s}" % (ned.north, ned.east, ned.down)
 
         # return [coordinate, attitude, velocity, ned_coordinate]
 
