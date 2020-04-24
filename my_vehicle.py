@@ -79,5 +79,5 @@ class MyVehicle( Vehicle ):
             self.notify_attribute_listeners( 'raw_imu', self._raw_imu )
 
     @property
-    def ㄏ(self):
+    def raw_imu(self):
         return self._raw_imu
