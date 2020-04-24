@@ -27,22 +27,41 @@ class ArdupilotEntity:
         alt_hex = gps_convertor(gps.lat)
 
         gps_hex_str = (lat_hex + lon_hex + alt_hex)
-        print(gps_hex_str)
+        print("GPS:")
+        print(gps)
 
         xgyro = self.vehicle.raw_imu.xgyro # Angular speed around X axis (millirad /sec)
         ygyro = self.vehicle.raw_imu.ygyro # Angular speed around Y axis (millirad /sec)
         zgyro = self.vehicle.raw_imu.zgyro # Angular speed around Z axis (millirad /sec)
-
+        print("xgyro:")
+        print(xgyro)
+        print("ygyro:")
+        print(ygyro)
+        print("zgyro:")
+        print(zgyro)
 
         xacc = self.vehicle.raw_imu.xacc  # x acceleration (mg)
         yacc = self.vehicle.raw_imu.yacc  # y acceleration (mg)
         zacc = self.vehicle.raw_imu.zacc  # z acceleration (mg)
 
+        print("xacc:")
+        print(xacc)
+        print("yacc:")
+        print(yacc)
+        print("zacc:")
+        print(zacc)
+
         velocity = self.vehicle.velocity
+
+        print("velocity:")
+        print(velocity)
 
         fly_mode = self.vehicle.mode.name
 
         ned = self.vehicle.location.local_frame
+
+        print("ned:")
+        print(ned)
 
         # return [coordinate, attitude, velocity, ned_coordinate]
 
