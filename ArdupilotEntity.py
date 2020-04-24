@@ -14,11 +14,16 @@ class ArdupilotEntity:
         gps = self.vehicle.location.global_relative_frame
 
         lat_hex = gps_convertor(gps.lat)
-        print(lat_hex)
-        # lon_hex = gps_convertor(gps.lon)
-        # alt_hex = gps_convertor(gps.lat)
+        lon_hex = gps_convertor(gps.lon)
+        alt_hex = gps_convertor(gps.lat)
 
-        imu = self.vehicle.raw_imu
+        xgyro = self.vehicle.raw_imu['xgyro']
+        ygyro = self.vehicle.raw_imu['ygyro']
+        zgyro = self.vehicle.raw_imu['zgyro']
+        print('--------')
+        print(xgyro)
+        print(ygyro)
+        print(zgyro)
 
         velocity = self.vehicle.velocity
 
