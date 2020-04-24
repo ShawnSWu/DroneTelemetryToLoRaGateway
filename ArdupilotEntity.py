@@ -17,13 +17,7 @@ class ArdupilotEntity:
         lon_hex = gps_convertor(gps.lon)
         alt_hex = gps_convertor(gps.lat)
 
-        xgyro = self.vehicle.raw_imu['xgyro']
-        ygyro = self.vehicle.raw_imu['ygyro']
-        zgyro = self.vehicle.raw_imu['zgyro']
-        print('--------')
-        print(xgyro)
-        print(ygyro)
-        print(zgyro)
+        print(type(self.vehicle.raw_imu))
 
         velocity = self.vehicle.velocity
 
