@@ -31,10 +31,6 @@ class ArdupilotEntity:
         payload.addGyrometer(2, imu.xgyro, imu.ygyro, imu.zgyro)
         payload.addAccelerometer(2, imu.xacc, imu.yacc, imu.zacc)
 
-        print("payload")
-        print(type(payload.getBuffer()))
-
-
         # lon_hex = gps_convertor(gps.lon) #-180 ~ 180
         # lat_hex = gps_convertor(gps.lat) #-90 ~ 90
         # alt_hex = gps_convertor(gps.lat)
