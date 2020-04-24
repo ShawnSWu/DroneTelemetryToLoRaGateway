@@ -2,6 +2,7 @@ from dronekit import connect, Vehicle
 from  my_vehicle import MyVehicle  #Our custom vehicle class
 import math
 from cayennelpp import CayenneLPP
+import binascii
 
 class ArdupilotEntity:
     def __init__(self, ip, baud, heartbeat_timeout):
@@ -31,7 +32,7 @@ class ArdupilotEntity:
         payload.addAccelerometer(2, imu.xacc, imu.yacc, imu.zacc)
 
         print("payload")
-        print(payload.getBuffer())
+        print(type(payload.getBuffer()))
 
 
         # lon_hex = gps_convertor(gps.lon) #-180 ~ 180
@@ -59,7 +60,7 @@ class ArdupilotEntity:
 
         ned = self.vehicle.location.local_frame
 
-        return payload.getBuffer()
+        return binascii.hexlify(payload.getBuffer())
 
 
 
