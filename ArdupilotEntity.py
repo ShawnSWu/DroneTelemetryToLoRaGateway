@@ -18,6 +18,7 @@ class ArdupilotEntity:
         # alt_hex = gps_convertor(gps.lat)
 
         imu = self.vehicle.raw_imu
+        print("--------------------------")
 
         print(imu)
 
