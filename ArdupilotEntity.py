@@ -13,19 +13,20 @@ class ArdupilotEntity:
     def get_drone_data(self):
         gps = self.vehicle.location.global_relative_frame
 
-        lat_hex = gps_convertor(gps.lat)
-        lon_hex = gps_convertor(gps.lon)
-        alt_hex = gps_convertor(gps.lat)
+        # lat_hex = gps_convertor(gps.lat)
+        # lon_hex = gps_convertor(gps.lon)
+        # alt_hex = gps_convertor(gps.lat)
 
         def raw_imu_callback(self, attr_name, value):
-            # attr_name == 'raw_imu'
-            # value == vehicle.raw_imu
-            print("--------------------start--------------------")
-            print(value)
-            print(attr_name)
-            print("--------------------start--------------------")
+                # attr_name == 'raw_imu'
+                # value == vehicle.raw_imu
+                print("--------------------start--------------------")
+                print(value)
+                print(attr_name)
+                print("--------------------start--------------------")
 
-            self.vehicle.add_attribute_listener( 'raw_imu', raw_imu_callback )
+
+        self.vehicle.add_attribute_listener( 'raw_imu', raw_imu_callback )
 
 
         # attitude_3axis = self.vehicle.attitude
@@ -46,8 +47,7 @@ class ArdupilotEntity:
 
         # return [coordinate, attitude, velocity, ned_coordinate]
 
-    def raw_imu_callback(self):
-        return 123
+
 
 
 
