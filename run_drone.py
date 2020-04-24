@@ -12,7 +12,9 @@ lora_board = EKS76S('/dev/ttyUSB0', 115200, 5)
 if lora_board.join_abp() is False:
     lora_board.join_abp()
 
-while True:
+print("Drone status")
+print(pixhawk.vehicle.is_armable)
+while pixhawk.vehicle.is_armable:
     result = lora_board.send_bundle_data_to_gateway(pixhawk.get_drone_data())
     print("-------->")
     print(result)
