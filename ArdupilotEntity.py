@@ -18,7 +18,7 @@ class ArdupilotEntity:
         alt_hex = gps_convertor(gps.lat)
 
         gps_hex_str = (lat_hex + lon_hex + alt_hex)
-        print(gps)
+        print(gps_hex_str)
 
         xgyro = self.vehicle.raw_imu.xgyro
         ygyro = self.vehicle.raw_imu.ygyro
