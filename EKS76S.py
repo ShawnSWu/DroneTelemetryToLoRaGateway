@@ -36,7 +36,6 @@ class EKS76S:
         return result.strip()
 
     def send_data_to_gateway(self, data):
-
         packget = 'mac tx ucnf 2 %s' % data
         print(packget)
         self.serial.write( packget.encode( encoding="utf-8" ) )
