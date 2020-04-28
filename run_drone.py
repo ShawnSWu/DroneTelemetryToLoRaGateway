@@ -4,9 +4,9 @@ from time import sleep
 import pigpio
 
 
-pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
-drone_data = pixhawk.get_drone_data()
-print(drone_data)
+# pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
+# drone_data = pixhawk.get_drone_data()
+# print(drone_data)
 
 
 another_tx = 36
