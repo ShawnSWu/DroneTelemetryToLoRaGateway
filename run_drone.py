@@ -10,7 +10,7 @@ import pigpio
 
 
 another_tx = 36
-pi = pigpio.pi()
+pi = pigpio.pi('soft', 8888)
 pi.set_mode(another_tx, pigpio.OUTPUT)
 
 
