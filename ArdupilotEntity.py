@@ -25,4 +25,5 @@ class ArdupilotEntity:
         print(ned)
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
+        print(cayenne_format_payload)
         return cayenne_format_payload
