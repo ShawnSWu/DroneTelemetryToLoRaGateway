@@ -4,8 +4,6 @@ from time import sleep
 
 
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
-drone_data = pixhawk.get_drone_data()
-print(drone_data)
 
 lora_board = EKS76S('/dev/ttyUSB0', 115200, 5)
 

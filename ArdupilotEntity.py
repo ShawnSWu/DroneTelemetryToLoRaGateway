@@ -20,12 +20,8 @@ class ArdupilotEntity:
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
 
-        print(imu.xgyro)
-        print(imu.ygyro)
-        print(imu.zgyro)
-        print(binascii.hexlify(payload.getBuffer()).decode('utf8'))
+        print("------------")
+        print(ned)
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
-
-        print(cayenne_format_payload)
         return cayenne_format_payload
