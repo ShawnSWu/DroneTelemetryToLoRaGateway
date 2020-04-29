@@ -14,7 +14,9 @@ if lora_board.join_abp() is False:
 
 
 print("---------------Start---------------")
-while pixhawk.vehicle.is_armable:
+print(pixhawk.vehicle.is_armable)
+print(pixhawk.vehicle.armed)
+while pixhawk.vehicle.armed:
     result = lora_board.send_data_to_gateway(pixhawk.get_drone_data())
     print("-------->")
     print(result)
