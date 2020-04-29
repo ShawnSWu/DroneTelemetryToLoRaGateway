@@ -40,7 +40,7 @@ class EKS76S:
         print(packget)
         self.serial.write( packget.encode( encoding="utf-8" ) )
         self.serial.flush()
-        result_byte = self.serial.read( 30 )
+        result_byte = self.serial.read( 300 )
         result = bytes.decode( result_byte )
         result.replace( '\n', '' )
         result.replace( '\r', '' )
