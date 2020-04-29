@@ -112,7 +112,7 @@ class CayenneLPP(object):
                                    round(z, 3) * 1000)
 
     def addGyrometer(self, channel, x, y, z):
-        return self._add_to_buffer('LPP_BAROMETRIC_PRESSURE',
+        return self._add_to_buffer('LPP_GYROMETER',
                                    channel,
                                    round(x, 2) * 100,
                                    round(y, 2) * 100,
