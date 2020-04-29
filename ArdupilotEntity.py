@@ -21,6 +21,7 @@ class ArdupilotEntity:
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
 
         print("------------")
+        print(gps)
         print(ned)
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
