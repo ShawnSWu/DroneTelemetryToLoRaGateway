@@ -16,9 +16,14 @@ class ArdupilotEntity:
         gps = self.vehicle.location.global_relative_frame
         imu = self.vehicle.raw_imu
         ned = self.vehicle.location.local_frame
-        payload.addGPS(1, gps.lat, gps.lon, gps.alt)
+        # payload.addGPS(1, gps.lat, gps.lon, gps.alt)
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
-        payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
+        # payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
+
+        print(imu.xgyro)
+        print(imu.ygyro)
+        print(imu.zgyro)
+        print(binascii.hexlify(payload.getBuffer()).decode('utf8'))
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
         return cayenne_format_payload
