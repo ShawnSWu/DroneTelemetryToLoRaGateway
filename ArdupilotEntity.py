@@ -20,7 +20,8 @@ class ArdupilotEntity:
         payload.addGPS(1, gps.lat, gps.lon, gps.alt)
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
-        payload.addNED(8, ned.north, ned.east, ned.down)
+        if ned.north and ned.north and ned.down is not None:
+            payload.addNED(8, ned.north, ned.east, ned.down)
 
         print("------------")
         print(gps)
