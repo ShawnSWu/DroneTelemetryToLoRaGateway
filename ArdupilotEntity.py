@@ -23,6 +23,8 @@ class ArdupilotEntity:
         print("------------")
         print(gps)
         print(ned)
+        print(imu)
+        print("------------")
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
         print(cayenne_format_payload)
