@@ -11,6 +11,7 @@ TYPE = {
     'LPP_BAROMETRIC_PRESSURE': [3315, 2],
     'LPP_GYROMETER': [3334, (2, 2, 2)],
     'LPP_GPS': [3336, (3, 3, 3)],
+    'LPP_NED': [3337, (2, 2, 2)]
 }
 
 
@@ -39,6 +40,7 @@ class CayenneLPP(object):
 
             for i in range(0, len(data_size)):
                 # temp_buff+=int(value[i]).to_bytes(data_size[i],'big')  #NOT FULLY IMPLEMENTED IN MICROPYTHON
+                print(value[i])
                 temp_buff += to_bytes(int(value[i]), data_size[i])
 
             assert self._maxsize == 0 or self.getSize() + len(temp_buff) <= self._maxsize
@@ -124,3 +126,11 @@ class CayenneLPP(object):
                                    round(latitude, 4) * 10000,
                                    round(longitude, 4) * 10000,
                                    round(meters, 2) * 100)
+
+    # NED use LPP_ACCELEROMETER format
+    def addNED(self, channel, north, east, down):
+        return self._add_to_buffer('LPP_NED',
+                                   channel,
+                                   round(north, 3) * 1000,
+                                   round(east, 3) * 1000,
+                                   round(down, 3) * 1000)

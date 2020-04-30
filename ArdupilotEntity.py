@@ -4,6 +4,7 @@ from cayennelpp import CayenneLPP
 import binascii
 
 class ArdupilotEntity:
+
     def __init__(self, ip, baud, heartbeat_timeout):
         self.ip = ip
         self.baud = baud
@@ -19,6 +20,7 @@ class ArdupilotEntity:
         payload.addGPS(1, gps.lat, gps.lon, gps.alt)
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
+        payload.addNED(8, ned.north, ned.east, ned.down)
 
         print("------------")
         print(gps)
