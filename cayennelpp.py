@@ -12,7 +12,7 @@ TYPE = {
     'LPP_GYROMETER': [3334, (2, 2, 2)],
     'LPP_GPS': [3336, (3, 3, 3)],
     'LPP_NED': [3337, (2, 2, 2)],
-    'LPP_ATTITUDE': [3338, (4, 4, 4)]
+    'LPP_ATTITUDE': [3338, (3, 3, 3)]
 }
 
 
@@ -144,6 +144,6 @@ class CayenneLPP(object):
         else:
             return self._add_to_buffer('LPP_ATTITUDE',
                                        channel,
-                                       round(pitch, 8) * 1000,
-                                       round(yaw, 8) * 1000,
-                                       round(roll, 8) * 1000)
+                                       round(pitch, 4) * 1000,
+                                       round(yaw, 4) * 1000,
+                                       round(roll, 4) * 1000)
