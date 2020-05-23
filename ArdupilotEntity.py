@@ -31,12 +31,7 @@ class ArdupilotEntity:
         print(attitude)
         print("------------")
 
-        if ned.north and ned.north and ned.down is None:
-            payload.addNED( 8, 0.0, 0.0, 0.0 )
-        else:
-            payload.addNED( 8, ned.north, ned.east, ned.down )
-
-
+        payload.addNED( 8, ned.north, ned.east, ned.down )
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
         print(cayenne_format_payload)
