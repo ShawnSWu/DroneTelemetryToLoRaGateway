@@ -130,14 +130,18 @@ class CayenneLPP(object):
 
     # NED use LPP_ACCELEROMETER format
     def addNED(self, channel, north, east, down):
+        print(north)
 
         if north == 0.0:
+            print("11111")
+
             return self._add_to_buffer( 'LPP_NED',
                                         channel,
                                         0,
                                         0,
                                         0 )
         else:
+            print("2222")
             return self._add_to_buffer('LPP_NED',
                                        channel,
                                        round(north, 3) * 1000,
