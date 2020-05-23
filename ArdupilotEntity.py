@@ -21,8 +21,8 @@ class ArdupilotEntity:
 
         payload.addGPS(1, gps.lat, gps.lon, gps.alt)
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
-        payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
-        # payload.addAttitude(9, attitude.pitch, attitude.yaw, attitude.roll)
+        payload.addAccelerometer(5, imu.xacc, imu.yacc, imu.zacc)
+        payload.addAttitude(7, attitude.pitch, attitude.yaw, attitude.roll)
 
         print("------------")
         print(gps)
@@ -31,7 +31,7 @@ class ArdupilotEntity:
         print(attitude)
         print("------------")
 
-        payload.addNED( 8, ned.north, ned.east, ned.down )
+        payload.addNED( 9, ned.north, ned.east, ned.down )
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
         print(cayenne_format_payload)
