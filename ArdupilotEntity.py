@@ -24,17 +24,19 @@ class ArdupilotEntity:
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
         # payload.addAttitude(9, attitude.pitch, attitude.yaw, attitude.roll)
 
-        if ned.north and ned.north and ned.down is not None:
-            payload.addNED( 8, 0.0, 0.0, 0.0 )
-        else:
-            payload.addNED( 8, ned.north, ned.east, ned.down )
-
         print("------------")
         print(gps)
         print(ned)
         print(imu)
         print(attitude)
         print("------------")
+
+        if ned.north and ned.north and ned.down is None:
+            payload.addNED( 8, 0.0, 0.0, 0.0 )
+        else:
+            payload.addNED( 8, ned.north, ned.east, ned.down )
+
+
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')
         print(cayenne_format_payload)
