@@ -33,9 +33,6 @@ class CayenneLPP(object):
     def _add_to_buffer(self, dtype, channel, *value):
         try:
             data_type, data_size = TYPE[dtype]
-
-            print(data_type)
-            print(data_size)
             if type(data_size) == int:
                 data_size = (data_size,)
             temp_buff = bytearray()
