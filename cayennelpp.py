@@ -12,7 +12,7 @@ TYPE = {
     'LPP_GYROMETER': [3334, (2, 2, 2)],
     'LPP_GPS': [3336, (3, 3, 3)],
     'LPP_NED': [3337, (2, 2, 2)],
-    'LPP_ATTITUDE': [3350, (3, 3, 3)]
+    'LPP_ATTITUDE': [3350, (6, 6, 6)]
 }
 
 
