@@ -4,7 +4,6 @@ from time import sleep
 
 
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
-
 pixhawk.get_drone_data()
 # lora_board = EKS76S('/dev/ttyUSB0', 115200, 5)
 #
@@ -13,8 +12,8 @@ pixhawk.get_drone_data()
 # result = lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
 # print("-------->")
 # print(result)
-# sleep( 3 )
 
+# sleep( 3 )
 # while True:
 #     print("<---------------Waiting Drone take off--------------->")
 #     while pixhawk.vehicle.armed:
