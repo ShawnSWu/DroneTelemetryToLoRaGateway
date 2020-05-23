@@ -144,6 +144,6 @@ class CayenneLPP(object):
         else:
             return self._add_to_buffer('LPP_ATTITUDE',
                                        channel,
-                                       round(pitch, 4) * 1000,
-                                       round(yaw, 4) * 1000,
-                                       round(roll, 4) * 1000)
+                                       round(pitch, 8) * 1000,
+                                       round(yaw, 8) * 1000,
+                                       round(roll, 8) * 1000)
