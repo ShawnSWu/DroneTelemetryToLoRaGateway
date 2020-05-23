@@ -12,7 +12,7 @@ TYPE = {
     'LPP_GYROMETER': [3334, (2, 2, 2)],
     'LPP_GPS': [3336, (3, 3, 3)],
     'LPP_NED': [3337, (2, 2, 2)],
-    'LPP_ATTITUDE': [3338, (3, 3, 3)]
+    'LPP_ATTITUDE': [3350, (3, 3, 3)]
 }
 
 
@@ -33,6 +33,9 @@ class CayenneLPP(object):
     def _add_to_buffer(self, dtype, channel, *value):
         try:
             data_type, data_size = TYPE[dtype]
+
+            print(data_type)
+            print(data_size)
             if type(data_size) == int:
                 data_size = (data_size,)
             temp_buff = bytearray()
