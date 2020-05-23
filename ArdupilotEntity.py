@@ -17,16 +17,20 @@ class ArdupilotEntity:
         gps = self.vehicle.location.global_relative_frame
         imu = self.vehicle.raw_imu
         ned = self.vehicle.location.local_frame
+        attitude = self.vehicle.attitude
+
         payload.addGPS(1, gps.lat, gps.lon, gps.alt)
         payload.addGyrometer(3, imu.xgyro, imu.ygyro, imu.zgyro)
         payload.addAccelerometer(6, imu.xacc, imu.yacc, imu.zacc)
         if ned.north and ned.north and ned.down is not None:
             payload.addNED(8, ned.north, ned.east, ned.down)
+        payload.addAttitude(9, attitude.pitch, attitude.yaw, attitude.roll)
 
         print("------------")
         print(gps)
         print(ned)
         print(imu)
+        print(attitude)
         print("------------")
 
         cayenne_format_payload = binascii.hexlify(payload.getBuffer()).decode('utf8')

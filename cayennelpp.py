@@ -134,3 +134,11 @@ class CayenneLPP(object):
                                    round(north, 3) * 1000,
                                    round(east, 3) * 1000,
                                    round(down, 3) * 1000)
+
+    # NED use LPP_ACCELEROMETER format
+    def addAttitude(self, channel, pitch, yaw, roll):
+        return self._add_to_buffer('LPP_NED',
+                                   channel,
+                                   round(pitch, 3) * 1000,
+                                   round(yaw, 3) * 1000,
+                                   round(roll, 3) * 1000)
