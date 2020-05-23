@@ -4,14 +4,13 @@ from time import sleep
 
 
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
-pixhawk.get_drone_data()
-# lora_board = EKS76S('/dev/ttyUSB0', 115200, 5)
-#
-# if lora_board.join_abp() is False:
-#     lora_board.join_abp()
-# result = lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
-# print("-------->")
-# print(result)
+lora_board = EKS76S('/dev/ttyUSB0', 115200, 5)
+
+if lora_board.join_abp() is False:
+    lora_board.join_abp()
+result = lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
+print("-------->")
+print(result)
 
 # sleep( 3 )
 # while True:
