@@ -131,27 +131,19 @@ class CayenneLPP(object):
     # NED use LPP_ACCELEROMETER format
     def addNED(self, channel, north, east, down):
         if north is None:
-            print("11111")
-            return self._add_to_buffer( 'LPP_NED',
-                                        channel,
-                                        0,
-                                        0,
-                                        0 )
+            return self._add_to_buffer( 'LPP_NED', channel, 0, 0, 0 )
         else:
-            print("2222")
-            return self._add_to_buffer('LPP_NED',
-                                       channel,
+            return self._add_to_buffer('LPP_NED', channel,
                                        round(north, 3) * 1000,
                                        round(east, 3) * 1000,
                                        round(down, 3) * 1000)
 
-
     def addAttitude(self, channel, pitch, yaw, roll):
-
-
-
-        return self._add_to_buffer('LPP_ATTITUDE',
-                                   channel,
-                                   round(pitch, 4) * 1000,
-                                   round(yaw, 4) * 1000,
-                                   round(roll, 4) * 1000)
+        if pitch is None:
+            return self._add_to_buffer( 'LPP_ATTITUDE', channel, 0, 0, 0 )
+        else:
+            return self._add_to_buffer('LPP_ATTITUDE',
+                                       channel,
+                                       round(pitch, 4) * 1000,
+                                       round(yaw, 4) * 1000,
+                                       round(roll, 4) * 1000)
