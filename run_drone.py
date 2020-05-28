@@ -12,9 +12,11 @@ if lora_board.join_abp() is False:
 
 
 while True:
-    if lora_board.join_abp() is False:
-        lora_board.join_abp()
-    lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
+    print("<---------------Waiting Drone take off--------------->")
+    while pixhawk.vehicle.armed:
+        if lora_board.join_abp() is False:
+            lora_board.join_abp()
+        lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
 
 #
 # while True:
