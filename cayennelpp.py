@@ -41,7 +41,6 @@ class CayenneLPP(object):
 
             for i in range(0, len(data_size)):
                 # temp_buff+=int(value[i]).to_bytes(data_size[i],'big')  #NOT FULLY IMPLEMENTED IN MICROPYTHON
-                print(value[i])
                 temp_buff += to_bytes(int(value[i]), data_size[i])
 
             assert self._maxsize == 0 or self.getSize() + len(temp_buff) <= self._maxsize
