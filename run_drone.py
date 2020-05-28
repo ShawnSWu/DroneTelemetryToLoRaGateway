@@ -14,7 +14,7 @@ if lora_board.join_abp() is False:
 while True:
     if lora_board.join_abp() is False:
         lora_board.join_abp()
-    lora_board.send_data_to_gateway( '01880382071257b1ffff9a038600640000006405714a381b58c1a80789000000000000098a0004fecd0000' )
+    lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
 
 #
 # while True:
