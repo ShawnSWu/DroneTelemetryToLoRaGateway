@@ -14,5 +14,5 @@ while True:
     print("<---------------Waiting Drone take off--------------->")
     while pixhawk.vehicle.armed:
             lora_board.send_data_to_gateway(pixhawk.get_drone_data())
-    sleep(1)
+    sleep(1.5)
 
