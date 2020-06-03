@@ -13,3 +13,4 @@ if lora_board.join_abp() is False:
 
 while True:
     lora_board.send_data_to_gateway( pixhawk.get_drone_data() )
+    sleep(1.5)
