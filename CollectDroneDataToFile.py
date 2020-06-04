@@ -12,11 +12,11 @@ file_name = today + '-' + time
 extension = ".csv"
 
 while True:
-    with open( file_name + extension, "w+" ) as file:
+    with open( "TrajectoryData/" + file_name + extension, "w+" ) as file:
         while True:
             writer = csv.writer( file )
             row_data = pixhawk.get_row_data()
-            writer.writerow( [today, time, row_data] )
-            print(pixhawk.get_row_data())
+            writer.writerow( row_data )
+            print(row_data)
             sleep( 2 )
 

@@ -2,6 +2,8 @@ from dronekit import connect
 from  my_vehicle import MyVehicle
 from cayennelpp import CayenneLPP
 import binascii
+from datetime import date
+from datetime import datetime
 
 class ArdupilotEntity:
 
@@ -37,8 +39,11 @@ class ArdupilotEntity:
         return cayenne_format_payload
 
     def get_row_data(self):
+        today = str( date.today() )
+        time = str( datetime.now().strftime( "%H:%M:%S" ) )
         gps = self.vehicle.location.global_relative_frame
         imu = self.vehicle.raw_imu
         ned = self.vehicle.location.local_frame
         attitude = self.vehicle.attitude
-        return [gps.lat, gps.lon, gps.alt,imu.xgyro, imu.ygyro, imu.zgyro,imu.xacc, imu.yacc, imu.zacc,ned.north, ned.east, ned.down,attitude.pitch, attitude.yaw, attitude.roll ]
+        return [today, time, gps.lat, gps.lon, gps.alt,imu.xgyro, imu.ygyro, imu.zgyro, imu.xacc, imu.yacc,
+                imu.zacc, ned.north, ned.east, ned.down, attitude.pitch, attitude.yaw, attitude.roll ]
