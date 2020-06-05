@@ -10,9 +10,10 @@ pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
 while True:
     print("<---------------Waiting Drone take off--------------->")
     if pixhawk.vehicle.armed:
-        today = str( date.today() )
-        time = str( datetime.now().strftime( "%H:%M" ) )
-        file_name = today + '-' + time
+        today = '{month:02d}{day:02d}{year}'.format( year=date.today().year, month=date.today().month,
+                                                     day=date.today().day )
+        time = str( datetime.now().strftime( "%H%M%S" ) )
+        file_name = today + '_' + time
         extension = ".csv"
         with open( "TrajectoryData/" + file_name + extension, "w+" ) as file:
             writer = csv.writer( file )
