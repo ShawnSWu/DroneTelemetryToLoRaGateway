@@ -21,4 +21,5 @@ while True:
                 writer.writerow( row_data )
                 print(row_data)
                 sleep( 2 )
+        file.close()
     sleep(4)
