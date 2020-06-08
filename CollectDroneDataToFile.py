@@ -8,6 +8,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, filename='DroneLog.log', filemode='w')
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
 
+logging.info( "===============================================================================" )
 
 while True:
     logging.info("<---------------Waiting Drone take off--------------->")
