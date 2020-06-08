@@ -5,7 +5,7 @@ from datetime import date
 from datetime import datetime
 import logging
 
-logging.basicConfig(level=logging.DEBUG, filename='DroneLog.log', filemode='w')
+logging.basicConfig(filename='DroneLog.log', filemode='w', format='%(asctime)s.%(msecs)03d %(levelname)s {%(module)s} [%(funcName)s] %(message)s', datefmt='%Y-%m-%d,%H:%M:%S', level=logging.INFO)
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
 
 logging.info( "===============================================================================" )
