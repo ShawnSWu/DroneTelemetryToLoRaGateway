@@ -3,11 +3,14 @@ from time import sleep
 import csv
 from datetime import date
 from datetime import datetime
+import logging
 
+logging.basicConfig(level=logging.DEBUG, filename='DroneLog.log', filemode='w')
 pixhawk = ArdupilotEntity("/dev/ttyAMA0", 57600, 30)
 
 
 while True:
+    logging.info("<---------------Waiting Drone take off--------------->")
     print("<---------------Waiting Drone take off--------------->")
     if pixhawk.vehicle.armed:
         today = '{month:02d}{day:02d}{year}'.format( year=date.today().year, month=date.today().month,
@@ -21,6 +24,9 @@ while True:
                 row_data = pixhawk.get_row_data()
                 writer.writerow( row_data )
                 print(row_data)
+                logging.info( row_data )
                 sleep( 2 )
         file.close()
+        logging.info( 'New file {file_name} has been created'.format( file_name=file_name ) )
+        print('New file {file_name} has been created'.format( file_name=file_name ))
     sleep(4)
