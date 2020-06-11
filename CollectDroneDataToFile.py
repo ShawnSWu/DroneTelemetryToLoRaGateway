@@ -23,14 +23,13 @@ while True:
             writer = csv.writer( file )
             writer.writerow( ['date', 'time', 'lat', 'lon', 'alt', 'x_gyro', 'y_gyro', 'z_gyro', 'x_acc', 'y_acc',
                 'z_acc', 'north', 'east', 'down', 'pitch', 'yaw', 'roll', 'wind_speed', 'wind_direction' ] )
-
             while pixhawk.vehicle.armed:
                 row_data = pixhawk.get_row_data()
                 writer.writerow( row_data )
                 print(row_data)
                 logging.info( '{date} {time}, {row_data}'.format( date=today, time=time, row_data=row_data ) )
                 logging.info( row_data )
-                sleep( 2 )
+                sleep( 2.5 )
         file.close()
         time = str( datetime.now().strftime( "%H:%M:%S" ) )
         logging.info( '{date} {time}, New file {file_name} has been created'.format(date=today, time=time, file_name=file_name ) )
