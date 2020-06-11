@@ -21,6 +21,9 @@ while True:
         extension = ".csv"
         with open( "TrajectoryData/" + file_name + extension, "w+" ) as file:
             writer = csv.writer( file )
+            writer.writerow( ['date', 'time', 'lat', 'lon', 'alt', 'x_gyro', 'y_gyro', 'z_gyro', 'x_acc', 'y_acc',
+                'z_acc', 'north', 'east', 'down', 'pitch', 'yaw', 'roll', 'wind_speed', 'wind_direction' ] )
+
             while pixhawk.vehicle.armed:
                 row_data = pixhawk.get_row_data()
                 writer.writerow( row_data )
