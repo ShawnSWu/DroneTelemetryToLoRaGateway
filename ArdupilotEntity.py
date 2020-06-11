@@ -45,5 +45,5 @@ class ArdupilotEntity:
         imu = self.vehicle.raw_imu
         ned = self.vehicle.location.local_frame
         attitude = self.vehicle.attitude
-        return [today, time, gps.lat, gps.lon, gps.alt,imu.xgyro, imu.ygyro, imu.zgyro, imu.xacc, imu.yacc,
-                imu.zacc, ned.north, ned.east, ned.down, attitude.pitch, attitude.yaw, attitude.roll ]
+        return [today, time, gps.lat, gps.lon, gps.alt, imu.xgyro, imu.ygyro, imu.zgyro, imu.xacc, imu.yacc,
+                imu.zacc, ned.north, ned.east, ned.down, attitude.pitch, attitude.yaw, attitude.roll, 0, 0 ]
