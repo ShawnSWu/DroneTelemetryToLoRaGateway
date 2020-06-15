@@ -29,7 +29,7 @@ while True:
                 print(row_data)
                 logging.info( '{date} {time}, {row_data}'.format( date=today, time=time, row_data=row_data ) )
                 logging.info( row_data )
-                sleep( 2.5 )
+                sleep( 3 )
         file.close()
         time = str( datetime.now().strftime( "%H:%M:%S" ) )
         logging.info( '{date} {time}, New file {file_name} has been created'.format(date=today, time=time, file_name=file_name ) )
